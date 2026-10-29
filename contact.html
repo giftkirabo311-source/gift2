@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirabo Fresh Foods | Contact</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary-green: #1f5d3a;
+            --primary-green-dark: #14392a;
+            --bg-light-green: #e6f4e4;
+            --accent-orange: #f5a623;
+            --accent-red: #d9482b;
+            --text-dark: #1d2b22;
+            --text-muted: #5a6b60;
+            --bg-body: #fbfdf8;
+            --white: #ffffff;
+            --whatsapp-green: #1fa855;
+            --border-color: #cfe0d2;
+        }
+
+        body {
+            font-family: 'Nunito', system-ui, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.2;
+            color: var(--primary-green);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 12px rgba(31, 93, 58, 0.12);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-green);
+        }
+
+        .logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            display: block;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--bg-light-green);
+            color: var(--primary-green);
+        }
+
+        /* Mobile Menu Toggle */
+        #menu-toggle, .menu-icon {
+            display: none;
+        }
+
+        .menu-icon {
+            font-size: 1.7rem;
+            color: var(--primary-green);
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* Announcement Ticker */
+        .marquee {
+            background-color: var(--primary-green);
+            color: var(--white);
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .ticker {
+            display: inline-flex;
+            animation: marquee-scroll 30s linear infinite;
+        }
+
+        .marquee:hover .ticker {
+            animation-play-state: paused;
+        }
+
+        .ticker span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+        }
+
+        .ticker-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        @keyframes marquee-scroll {
+            to { transform: translateX(-50%); }
+        }
+
+        /* --- HERO BANNER --- */
+        .page-header {
+            background-color: var(--bg-light-green);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            max-width: 60ch;
+            margin: 8px auto 0;
+        }
+
+        /* --- MAIN CONTENT & FORMS --- */
+        section {
+            padding: 48px 0;
+        }
+
+        .grid-two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 18px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(31, 93, 58, 0.1);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .contact-item strong {
+            color: var(--text-dark);
+        }
+
+        /* Form Inputs */
+        form label {
+            display: block;
+            font-weight: 700;
+            margin-top: 14px;
+            font-size: 0.95rem;
+        }
+
+        form input, form textarea {
+            font-family: inherit;
+            font-size: 1rem;
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            margin-top: 6px;
+            background-color: #fafdfa;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            background-color: var(--white);
+        }
+
+        /* Buttons */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 800;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            margin-top: 16px;
+            transition: background-color 0.2s, transform 0.2s;
+            width: 100%;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1a934a;
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-green-dark);
+            color: #cfe3d4;
+            padding: 40px 0 90px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-top: 6px;
+        }
+
+        /* Floating WhatsApp Button */
+        .fab-whatsapp {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 99;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            font-weight: 800;
+            padding: 12px 20px;
+            border-radius: 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .fab-whatsapp:hover {
+            transform: scale(1.03);
+            background-color: #1a934a;
+        }
+
+        .fab-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 900px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                background-color: var(--white);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 12px 4%;
+            }
+
+            #menu-toggle:checked ~ nav {
+                max-height: 460px;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .grid-two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fab-whatsapp span {
+                display: none;
+            }
+
+            .fab-whatsapp {
+                padding: 14px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header>
+        <div class="container navbar">
+            <a class="logo" href="index.html">
+                <img src="logo.jpg" alt="Kirabo Logo" class="logo-img">
+                Kirabo Fresh Foods
+            </a>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label class="menu-icon" for="menu-toggle" aria-label="Toggle Menu">☰</label>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="fresh-produce.html">Fresh Produce</a></li>
+                    <li><a href="pantry.html">Pantry &amp; Grains</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="delivery.html">Delivery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- ANNOUNCEMENT TICKER MARQUEE -->
+        <div class="marquee">
+            <div class="ticker">
+                <span><img src="flesh produce.jpg" alt="" class="ticker-icon"> Fresh produce delivered daily •</span>
+                <span><img src="delivery.jpg" alt="" class="ticker-icon"> Free delivery over UGX 100,000 •</span>
+                <span><img src="whatsapp.jpg" alt="" class="ticker-icon"> Order on WhatsApp +256 756336981 •</span>
+                <span><img src="images/icon-clock.png" alt="" class="ticker-icon"> Open daily 7am to 8pm •</span>
+                <span><img src="flesh produce.jpg" alt="" class="ticker-icon"> Fresh produce delivered daily •</span>
+                <span><img src="delivery.jpg" alt="" class="ticker-icon"> Free delivery over UGX 100,000 •</span>
+                <span><img src="whatsapp.jpg" alt="" class="ticker-icon"> Order on WhatsApp +256 756336981 •</span>
+                <span><img src="images/icon-clock.png" alt="" class="ticker-icon"> Open daily 7am to 8pm •</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO HEADER -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Contact us</h1>
+            <p>The quickest way to order is WhatsApp. We reply fast.</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTACT SECTION -->
+    <section>
+        <div class="container grid-two-col">
+            
+            <!-- CONTACT INFO PANEL -->
+            <div class="card">
+                <h3>Talk to us</h3>
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <img src="whatsapp.jpg" alt="WhatsApp" class="contact-icon">
+                        <span><strong>WhatsApp:</strong> +256 756336981</span>
+                    </li>
+                    <li class="contact-item">
+                        <img src="email.jpg" alt="Email" class="contact-icon">
+                        <span><strong>Email:</strong> <a href="mailto:giftkirabo311@gmail.com" style="color:var(--primary-green); font-weight:700;">giftkirabo311@gmail.com</a></span>
+                    </li>
+                    <li class="contact-item">
+                        <img src="hours.png" alt="Hours" class="contact-icon">
+                        <span><strong>Hours:</strong> Open daily, 7:00am to 8:00pm</span>
+                    </li>
+                </ul>
+                <a class="btn-whatsapp" href="https://wa.me/256756336981" target="_blank" rel="noopener">
+                    <img src="whatsapp.jpg" alt="" class="btn-icon">
+                    Open WhatsApp
+                </a>
+            </div>
+
+            <!-- ORDER FORM PANEL -->
+            <form class="card" id="order-form">
+                <h3>Send your order</h3>
+                
+                <label for="nm">Your name</label>
+                <input id="nm" type="text" required autocomplete="name" placeholder="e.g. Sarah Namukasa">
+                
+                <label for="od">What would you like?</label>
+                <textarea id="od" rows="4" required placeholder="e.g. 2 kg tomatoes, 1 bunch matooke"></textarea>
+                
+                <button class="btn-whatsapp" type="submit">
+                    <img src="whatsapp.jpg" alt="" class="btn-icon">
+                    Send on WhatsApp
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p><b>Kirabo Fresh Foods</b></p>
+            <p>WhatsApp: +256 756336981 · giftkirabo311@gmail.com</p>
+            <p>Open daily, 7:00am to 8:00pm</p>
+            <p style="margin-top: 14px; font-size: 0.85rem; opacity: 0.8;">© 2026 Kirabo Fresh Foods. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a class="fab-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <img src="whatsapp.jpg" alt="" class="fab-icon">
+        <span>Chat on WhatsApp</span>
+    </a>
+
+    <!-- SCRIPT FOR WHATSAPP FORM REDIRECT -->
+    <script>
+        document.getElementById('order-form').onsubmit = function(e) {
+            e.preventDefault();
+            var name = document.getElementById('nm').value;
+            var orderDetails = document.getElementById('od').value;
+            var text = 'Hello, I am ' + name + '. I would like to order: ' + orderDetails;
+            window.open('https://wa.me/256756336981?text=' + encodeURIComponent(text), '_blank', 'noopener');
+        };
+    </script>
+
+</body>
+</html>

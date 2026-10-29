@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kirabo Fresh Foods | Fresh Produce</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--g:#1f5d3a;--m:#e6f4e4;--o:#f5a623;--r:#d9482b;--ink:#1d2b22;--mut:#5a6b60}
+body{font-family:'Nunito',system-ui,sans-serif;background:#fbfdf8;color:var(--ink);line-height:1.6}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.2;color:var(--g)}
+a{color:inherit;text-decoration:none}
+.w{width:min(1100px,92%);margin:auto}
+header{background:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 12px rgba(31,93,58,.12)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.logo{font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:1.3rem;color:var(--g)}
+nav ul{display:flex;gap:2px;list-style:none;flex-wrap:wrap}
+nav a{padding:7px 12px;border-radius:20px;font-weight:600;font-size:.92rem;display:block}
+nav a:hover,nav a.on{background:var(--m);color:var(--g)}
+#mt,.bg{display:none}
+.bg{font-size:1.7rem;color:var(--g);cursor:pointer;padding:0 8px}
+.mq{background:var(--g);color:#fff;overflow:hidden;white-space:nowrap;font-weight:700;font-size:.9rem}
+.tr{display:inline-flex;animation:mq 30s linear infinite}
+.mq:hover .tr{animation-play-state:paused}
+.tr span{padding:7px 14px}
+@keyframes mq{to{transform:translateX(-50%)}}
+.hd{background:var(--m);padding:38px 0;text-align:center}
+.hd h1{font-size:clamp(1.8rem,5vw,2.8rem)}
+.hd p{color:var(--mut);max-width:60ch;margin:8px auto 0}
+section{padding:40px 0}
+.gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px}
+.c{background:#fff;border-radius:18px;padding:20px;box-shadow:0 4px 16px rgba(31,93,58,.1)}
+.e{font-size:2.4rem;width:70px;height:70px;border-radius:50%;background:var(--m);display:grid;place-items:center;margin-bottom:8px}
+.p{font-weight:800;color:var(--r);margin-bottom:8px}
+.b{display:inline-block;padding:8px 18px;border-radius:30px;font-weight:800;background:#1fa855;color:#fff;font-size:.9rem}
+.n{color:var(--mut);font-size:.88rem;margin-top:20px}
+footer{background:#14392a;color:#cfe3d4;padding:30px 0 90px;text-align:center}
+footer p{margin-top:4px}
+.fab{position:fixed;right:16px;bottom:16px;z-index:99;background:#1fa855;color:#fff;font-weight:800;padding:12px 18px;border-radius:40px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+@media(max-width:900px){.bg{display:block}nav{position:absolute;left:0;right:0;top:100%;background:#fff;max-height:0;overflow:hidden;transition:max-height .3s}nav ul{flex-direction:column;padding:8px 4%}#mt:checked~nav{max-height:460px}}
+@media(max-width:480px){.fab span{display:none}.fab{padding:14px}.gr{grid-template-columns:1fr 1fr;gap:12px}.c{padding:16px}}
+@media(prefers-reduced-motion:reduce){.tr{animation:none}}
+</style>
+</head>
+<body>
+
+<header>
+<div class="w bar">
+<a class="logo" href="index.html">🌿 Kirabo Fresh Foods</a>
+<input type="checkbox" id="mt"><label class="bg" for="mt" aria-label="Menu">☰</label>
+<nav><ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="shop.html">Shop</a></li>
+<li><a href="fresh-produce.html" class="on">Fresh Produce</a></li>
+<li><a href="pantry.html">Pantry &amp; Grains</a></li>
+<li><a href="offers.html">Offers</a></li>
+<li><a href="delivery.html">Delivery</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul></nav>
+</div>
+<div class="mq"><div class="tr">
+<span>🌿 Fresh produce delivered daily • 🚚 Free delivery over UGX 100,000 • 💬 Order on WhatsApp +256 756336981 • ⏰ Open daily 7am to 8pm •</span>
+<span>🌿 Fresh produce delivered daily • 🚚 Free delivery over UGX 100,000 • 💬 Order on WhatsApp +256 756336981 • ⏰ Open daily 7am to 8pm •</span>
+</div></div>
+</header>
+
+<div class="hd"><div class="w">
+<h1>Fresh produce</h1>
+<p>Picked, sorted and washed on the day you order.</p>
+</div></div>
+
+<section>
+<div class="w">
+<div class="gr">
+<div class="c"><div class="e">🍅</div><h3>Tomatoes</h3><p class="p">UGX 4,000 / kg</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Tomatoes" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🍌</div><h3>Matooke</h3><p class="p">UGX 25,000 / bunch</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Matooke" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🍌</div><h3>Sweet bananas</h3><p class="p">UGX 5,000 / bunch</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Sweet%20bananas" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🥭</div><h3>Mangoes</h3><p class="p">UGX 6,000 / kg</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Mangoes" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🍍</div><h3>Pineapples</h3><p class="p">UGX 3,000 each</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Pineapples" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🥬</div><h3>Sukuma wiki</h3><p class="p">UGX 1,000 / bunch</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Sukuma%20wiki" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🧅</div><h3>Red onions</h3><p class="p">UGX 4,500 / kg</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Red%20onions" target="_blank" rel="noopener">Order</a></div>
+<div class="c"><div class="e">🥔</div><h3>Irish potatoes</h3><p class="p">UGX 3,500 / kg</p><a class="b" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Irish%20potatoes" target="_blank" rel="noopener">Order</a></div>
+</div>
+<p class="n">Sample prices in UGX. Message us for today’s price.</p>
+</div>
+</section>
+
+<footer>
+<div class="w">
+<p><b>Kirabo Fresh Foods</b></p>
+<p>WhatsApp: +256 756336981 · giftkirabo311@gmail.com</p>
+<p>Open daily, 7:00am to 8:00pm</p>
+<p style="margin-top:14px;font-size:.85rem;opacity:.8">© 2026 Kirabo Fresh Foods. All rights reserved.</p>
+</div>
+</footer>
+
+<a class="fab" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">💬 <span>Chat on WhatsApp</span></a>
+</body>
+</html>

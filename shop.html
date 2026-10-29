@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirabo Fresh Foods | Shop</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & VARIABLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary-green: #1f5d3a;
+            --primary-green-dark: #14392a;
+            --bg-light-green: #e6f4e4;
+            --accent-orange: #f5a623;
+            --accent-red: #d9482b;
+            --text-dark: #1d2b22;
+            --text-muted: #5a6b60;
+            --bg-body: #fbfdf8;
+            --white: #ffffff;
+            --whatsapp-green: #1fa855;
+            --border-color: #cfe0d2;
+        }
+
+        body {
+            font-family: 'Nunito', system-ui, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Fraunces', Georgia, serif;
+            line-height: 1.2;
+            color: var(--primary-green);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 0 auto;
+        }
+
+        .img-responsive {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 12px rgba(31, 93, 58, 0.12);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-green);
+        }
+
+        .logo-img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            display: block;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--bg-light-green);
+            color: var(--primary-green);
+        }
+
+        /* Mobile Menu Toggle */
+        #menu-toggle, .menu-icon {
+            display: none;
+        }
+
+        .menu-icon {
+            font-size: 1.7rem;
+            color: var(--primary-green);
+            cursor: pointer;
+            padding: 0 8px;
+        }
+
+        /* Announcement Ticker */
+        .marquee {
+            background-color: var(--primary-green);
+            color: var(--white);
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .ticker {
+            display: inline-flex;
+            animation: marquee-scroll 30s linear infinite;
+        }
+
+        .marquee:hover .ticker {
+            animation-play-state: paused;
+        }
+
+        .ticker span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+        }
+
+        .ticker-icon {
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+
+        @keyframes marquee-scroll {
+            to { transform: translateX(-50%); }
+        }
+
+        /* --- HERO BANNER --- */
+        .page-header {
+            background-color: var(--bg-light-green);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            max-width: 60ch;
+            margin: 8px auto 0;
+        }
+
+        /* --- SECTION STYLING --- */
+        section {
+            padding: 48px 0;
+        }
+
+        .bg-tint {
+            background-color: var(--bg-light-green);
+        }
+
+        section h2 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            margin-bottom: 4px;
+        }
+
+        .sub-text {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(31, 93, 58, 0.08);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(31, 93, 58, 0.12);
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 180px;
+            background-color: var(--bg-light-green);
+            overflow: hidden;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-body {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .product-body h3 {
+            font-size: 1.15rem;
+        }
+
+        .product-body p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            flex: 1;
+        }
+
+        .price {
+            font-weight: 800;
+            color: var(--accent-red);
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        /* Buttons */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.92rem;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1a934a;
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            background-color: var(--white);
+            color: var(--primary-green);
+            box-shadow: inset 0 0 0 2px var(--primary-green);
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-light-green);
+            transform: translateY(-1px);
+        }
+
+        .btn-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .section-action {
+            margin-top: 24px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-green-dark);
+            color: #cfe3d4;
+            padding: 40px 0 90px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 28px;
+        }
+
+        footer h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+            font-size: 1.1rem;
+        }
+
+        footer p {
+            margin-top: 4px;
+        }
+
+        footer a {
+            display: block;
+            padding: 3px 0;
+            color: #cfe3d4;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 32px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(207, 227, 212, 0.15);
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        /* Floating Action Button (WhatsApp) */
+        .fab-whatsapp {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 99;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            font-weight: 800;
+            padding: 12px 20px;
+            border-radius: 40px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .fab-whatsapp:hover {
+            transform: scale(1.03);
+            background-color: #1a934a;
+        }
+
+        .fab-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 900px) {
+            .menu-icon {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 100%;
+                background-color: var(--white);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 12px 4%;
+            }
+
+            #menu-toggle:checked ~ nav {
+                max-height: 480px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .fab-whatsapp span {
+                display: none;
+            }
+
+            .fab-whatsapp {
+                padding: 14px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .product-image-container {
+                height: 130px;
+            }
+
+            .product-body {
+                padding: 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .ticker {
+                animation: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN NAVIGATION HEADER -->
+    <header>
+        <div class="container navbar">
+            <a class="logo" href="index.html">
+                <img src="logo.jpg" alt="Kirabo Logo" class="logo-img">
+                Kirabo Fresh Foods
+            </a>
+            
+            <input type="checkbox" id="menu-toggle">
+            <label class="menu-icon" for="menu-toggle" aria-label="Toggle Menu">☰</label>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html" class="active">Shop</a></li>
+                    <li><a href="fresh-produce.html">Fresh Produce</a></li>
+                    <li><a href="pantry.html">Pantry &amp; Grains</a></li>
+                    <li><a href="offers.html">Offers</a></li>
+                    <li><a href="delivery.html">Delivery</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- ANNOUNCEMENT TICKER MARQUEE -->
+        <div class="marquee">
+            <div class="ticker">
+                <span><img src="flesh produce.jpg" alt="" class="ticker-icon"> Fresh produce delivered daily •</span>
+                <span><img src="delivery.jpg" alt="" class="ticker-icon"> Free delivery over UGX 100,000 •</span>
+                <span><img src="whatsapp.jpg" alt="" class="ticker-icon"> Order on WhatsApp +256 756336981 •</span>
+                <span><img src="images/icon-clock.png" alt="" class="ticker-icon"> Open daily 7am to 8pm •</span>
+                <span><img src="delivery.html" alt="" class="ticker-icon"> Fresh produce delivered daily •</span>
+                <span><img src="delivery.jpg" alt="" class="ticker-icon"> Free delivery over UGX 100,000 •</span>
+                <span><img src="whatsapp.jpg" alt="" class="ticker-icon"> Order on WhatsApp +256 756336981 •</span>
+                <span><img src="images/icon-clock.png" alt="" class="ticker-icon"> Open daily 7am to 8pm •</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO HEADER -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Shop all products</h1>
+            <p>Everything in one place. Tap Order on WhatsApp on any item.</p>
+        </div>
+    </div>
+
+    <!-- FRESH PRODUCE SECTION -->
+    <section>
+        <div class="container">
+            <h2>Fresh produce</h2>
+            <p class="sub-text">Picked fresh and sold by weight or bunch.</p>
+            
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="matooke.jpg" alt="Matooke (bunch)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Matooke (bunch)</h3>
+                        <p>Green cooking bananas from Mbarara farms.</p>
+                        <div class="price">UGX 25,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Matooke" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="pineapple.jpg" alt="Sweet Pineapple" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Sweet Pineapple</h3>
+                        <p>Ripe, juicy and picked this week.</p>
+                        <div class="price">UGX 4,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Pineapple" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="mangoes.webp" alt="Mangoes (6)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Mangoes (6)</h3>
+                        <p>Sweet and fibre-light, ready to eat.</p>
+                        <div class="price">UGX 6,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Mangoes" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="tomatoes.jpg" alt="Tomatoes (1kg)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Tomatoes (1kg)</h3>
+                        <p>Firm red tomatoes for stews and salads.</p>
+                        <div class="price">UGX 5,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Tomatoes" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-action">
+                <a class="btn-outline" href="fresh-produce.html">See all produce</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANTRY AND GRAINS SECTION -->
+    <section class="bg-tint">
+        <div class="container">
+            <h2>Pantry and grains</h2>
+            <p class="sub-text">Staples for every kitchen.</p>
+            
+            <div class="products-grid">
+                
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="rice.jpg" alt="Rice (5kg)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Rice (5kg)</h3>
+                        <p>Long grain, aromatic and fluffy.</p>
+                        <div class="price">UGX 22,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Rice" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="maize floor.jpg" alt="Maize Flour (2kg)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Maize Flour (2kg)</h3>
+                        <p>Fine posho flour for smooth ugali.</p>
+                        <div class="price">UGX 7,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Maize%20Flour" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="Beans.webp" alt="Beans (2kg)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Beans (2kg)</h3>
+                        <p>Sorted, clean and quick to cook.</p>
+                        <div class="price">UGX 9,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Beans" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="groundnuts.jpg" alt="Groundnuts (1kg)" class="img-responsive">
+                    </div>
+                    <div class="product-body">
+                        <h3>Groundnuts (1kg)</h3>
+                        <p>Raw, ready for roasting or paste.</p>
+                        <div class="price">UGX 8,000</div>
+                        <a class="btn-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order%20Groundnuts" target="_blank" rel="noopener">
+                            <img src="whatsapp.jpg" alt="" class="btn-icon">
+                            Order on WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section-action">
+                <a class="btn-outline" href="pantry.html">See all pantry items</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Kirabo Fresh Foods</h3>
+                    <p>Fresh food, honest prices, delivered to your door.</p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <a href="https://wa.me/256756336981" target="_blank" rel="noopener">WhatsApp: +256 756336981</a>
+                    <a href="mailto:giftkirabo311@gmail.com">giftkirabo311@gmail.com</a>
+                    <p>Open daily, 7:00am to 8:00pm</p>
+                </div>
+            </div>
+            <p class="footer-bottom">© 2026 Kirabo Fresh Foods. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a class="fab-whatsapp" href="https://wa.me/256756336981?text=Hello%2C%20I%20would%20like%20to%20order" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <img src="whatsapp.jpg" alt="" class="fab-icon">
+        <span>Chat on WhatsApp</span>
+    </a>
+
+</body>
+</html>
